@@ -55,11 +55,11 @@ class HomeFragment : Fragment(), HomeContract.View {
     }
 
     override fun showLoader() {
-        TODO("Not yet implemented")
+        homeLoader.visibility = View.VISIBLE
     }
 
     override fun hideLoader() {
-        TODO("Not yet implemented")
+        homeLoader.visibility = View.GONE
     }
 
     override fun showFavoriteTransfers(favoriteTransfer: List<FavoriteTransfer>) {
