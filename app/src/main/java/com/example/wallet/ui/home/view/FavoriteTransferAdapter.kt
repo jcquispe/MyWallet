@@ -1,11 +1,10 @@
-package com.example.wallet.ui.home
+package com.example.wallet.ui.home.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wallet.R
 import com.example.wallet.ui.home.FavoriteTransfer
-import com.example.wallet.ui.home.FavoriteTransferViewHolder
 
 class FavoriteTransferAdapter : RecyclerView.Adapter<FavoriteTransferViewHolder>() {
 
