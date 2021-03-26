@@ -2,6 +2,8 @@ package com.example.wallet.ui.home.presenter
 
 import com.example.wallet.ui.home.FavoriteTransfer
 import com.example.wallet.ui.home.HomeContract
+import com.example.wallet.ui.home.UserSingleton
+import com.example.wallet.ui.home.UserSingletonObject
 import com.example.wallet.ui.home.data.HomeInteractor
 
 class HomePresenter(private val view : HomeContract.View) : HomeContract.Presenter {
@@ -12,6 +14,8 @@ class HomePresenter(private val view : HomeContract.View) : HomeContract.Present
         view.showLoader()
         homeInteractor.retrieveFavoriteTransferFromCache(object: HomeContract.OnResponseCallback {
             override fun onResponse(favoriteList: List<FavoriteTransfer>) {
+                UserSingleton.getInstance().userName = "Juan Carlos"
+                UserSingletonObject.userName = "Carlos"
                 view.hideLoader()
                 view.showFavoriteTransfers(favoriteList)
             }

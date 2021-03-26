@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.wallet.R
 import com.example.wallet.ui.home.FavoriteTransfer
 import com.example.wallet.ui.home.HomeContract
+import com.example.wallet.ui.home.UserSingleton
+import com.example.wallet.ui.home.UserSingletonObject
 import com.example.wallet.ui.home.presenter.HomePresenter
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -60,6 +62,8 @@ class HomeFragment : Fragment(), HomeContract.View {
 
     override fun hideLoader() {
         homeLoader.visibility = View.GONE
+        println(UserSingleton.getInstance().userName)
+        println(UserSingletonObject.userName)
     }
 
     override fun showFavoriteTransfers(favoriteTransfer: List<FavoriteTransfer>) {

@@ -3,6 +3,8 @@ package com.example.wallet.ui.home.data
 import android.os.Handler
 import com.example.wallet.ui.home.FavoriteTransfer
 import com.example.wallet.ui.home.HomeContract
+import com.example.wallet.ui.home.UserSingleton
+import com.example.wallet.ui.home.UserSingletonObject
 
 class HomeInteractor {
 
@@ -60,5 +62,8 @@ class HomeInteractor {
 
         val handler = Handler()
         handler.postDelayed(runnable, 3000)
+
+        println(UserSingleton.getInstance().userName)
+        println(UserSingletonObject.userName)
     }
 }
