@@ -22,7 +22,7 @@ class HomeFragment : Fragment(), HomeContract.View {
     private val favoriteTransferAdapter =
         FavoriteTransferAdapter()
 
-    private lateinit var homePresenter : HomeContract.Presenter
+    private lateinit var homePresenter: HomeContract.Presenter
 
     override fun onCreateView(
         inflater: LayoutInflater,

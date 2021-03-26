@@ -28,9 +28,9 @@ class FavoriteTransferViewHolder(private val view: View) : RecyclerView.ViewHold
         val amount = item.amount.toString()
         var firstSegment: String = ""
         var secondSegment: String = ""
-        var formatedText : String = ""
+        var formatedText: String = ""
 
-        if ((amount.length - 2) > 3 && (amount.length - 2) >= 6 ) {
+        if ((amount.length - 2) > 3 && (amount.length - 2) >= 6) {
 
             for (i in 0..2) {
                 firstSegment += amount[i].toString()
@@ -42,7 +42,7 @@ class FavoriteTransferViewHolder(private val view: View) : RecyclerView.ViewHold
 
             formatedText = "${firstSegment},${secondSegment}"
 
-        }else if ((amount.length - 2) > 3 && (amount.length - 2) >= 5) {
+        } else if ((amount.length - 2) > 3 && (amount.length - 2) >= 5) {
             for (i in 0..1) {
                 firstSegment += amount[i].toString()
             }
@@ -53,7 +53,7 @@ class FavoriteTransferViewHolder(private val view: View) : RecyclerView.ViewHold
 
             formatedText = "${firstSegment},${secondSegment}"
 
-        }else if ((amount.length - 2) > 3 && (amount.length - 2) >= 4) {
+        } else if ((amount.length - 2) > 3 && (amount.length - 2) >= 4) {
             for (i in 0..0) {
                 firstSegment += amount[i].toString()
             }
@@ -63,18 +63,12 @@ class FavoriteTransferViewHolder(private val view: View) : RecyclerView.ViewHold
             }
 
             formatedText = "${firstSegment},${secondSegment}"
-        }else {
+        } else {
             formatedText = item.amount.toString()
         }
 
         return formatedText
     }
-
-
-
-
-
-
 
 
 //    fun bind(item: FavoriteTransfer) {

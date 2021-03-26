@@ -13,6 +13,6 @@ interface HomeContract {
     }
 
     interface OnResponseCallback {
-        fun onResponse(favoriteList : List<FavoriteTransfer>)
+        fun onResponse(favoriteList: List<FavoriteTransfer>)
     }
 }
