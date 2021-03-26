@@ -13,6 +13,8 @@ import com.example.wallet.ui.home.FavoriteTransfer
 import com.example.wallet.ui.home.HomeContract
 import com.example.wallet.ui.home.UserSingleton
 import com.example.wallet.ui.home.UserSingletonObject
+import com.example.wallet.ui.home.data.MessageFactory
+import com.example.wallet.ui.home.data.MessageFactory.Companion.TYPE_ERROR
 import com.example.wallet.ui.home.presenter.HomePresenter
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -68,5 +70,10 @@ class HomeFragment : Fragment(), HomeContract.View {
 
     override fun showFavoriteTransfers(favoriteTransfer: List<FavoriteTransfer>) {
         favoriteTransferAdapter.setData(favoriteTransfer)
+        //FACTORY
+        val dialogFactory= MessageFactory()
+        context?.let {
+            dialogFactory.getDialog(it, "typeInfo").show()
+        }
     }
 }
