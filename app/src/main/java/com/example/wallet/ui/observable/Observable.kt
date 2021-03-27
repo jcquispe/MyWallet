@@ -1,8 +1,8 @@
 package com.example.wallet.ui.observable
 
-interface Observable {
+interface Observable<T> {
 
-    fun addObserver(observer: Observer)
-    fun removeObserver(observer: Observer)
-    fun notifyObservers(newValue: Double)
+    fun addObserver(observer: Observer<T>)
+    fun removeObserver(observer: Observer<T>)
+    fun notifyObservers(newValue: T?)
 }
