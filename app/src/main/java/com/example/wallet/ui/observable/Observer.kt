@@ -1,6 +1,6 @@
 package com.example.wallet.ui.observable
 
-interface Observer<T> {
+interface Observer {
 
-    fun notifyChange(newValue: T?)
+    fun notifyChange(newValue: Double)
 }
