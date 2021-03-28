@@ -1,5 +1,7 @@
 package com.example.wallet.ui.home
 
+import androidx.lifecycle.LiveData
+
 interface HomeContract {
 
     interface View {
@@ -10,6 +12,7 @@ interface HomeContract {
 
     interface Presenter {
         fun retrieveFavoriteTransfers()
+        fun getPercentageLiveData() : LiveData<String>
     }
 
     interface OnResponseCallback {

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wallet.R
@@ -18,7 +19,6 @@ import com.example.wallet.ui.home.data.MessageFactory
 import com.example.wallet.ui.home.data.MessageFactory.Companion.TYPE_ERROR
 import com.example.wallet.ui.home.presenter.HomePresenter
 import com.example.wallet.ui.observable.AvailableBalanceObservable
-import com.example.wallet.ui.observable.Observer
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -43,7 +43,7 @@ class HomeFragment : Fragment(), HomeContract.View {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         homePresenter = HomePresenter(this)
-        homePresenter.retrieveFavoriteTransfers()
+        homePresenter?.retrieveFavoriteTransfers()
         circularProgress.setProgressWithAnimation(
             70f,
             1000,
@@ -54,11 +54,15 @@ class HomeFragment : Fragment(), HomeContract.View {
             .get()
             .load("https://media.licdn.com/dms/image/C4E03AQFcCuDIJl0mKg/profile-displayphoto-shrink_200_200/0?e=1583366400&v=beta&t=ymt3xgMe5bKS-2knNDL9mQYFksP9ZHne5ugIqEyRjZs")
             .into(profilePhotoImageView)
-        availableBalanceObservable.addObserver(object : Observer {
+        /*availableBalanceObservable.addObserver(object : Observer {
             override fun notifyChange(newValue: Double) {
                 amountValueTextView.text = "$ $newValue"
             }
 
+        })*/
+
+        homePresenter!!.getPercentageLiveData().observe(this, Observer<String>{
+            value -> percentageText.text = value
         })
     }
 
