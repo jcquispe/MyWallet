@@ -1,16 +1,20 @@
 package com.example.wallet.ui.transfer
 
 import android.os.Bundle
+import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wallet.R
+import com.example.wallet.ui.transfer.data.ApplicationDatabase
+import com.example.wallet.ui.transfer.data.TransferEntity
 import kotlinx.android.synthetic.main.fragment_transfer.*
 import java.text.NumberFormat
 
@@ -52,6 +56,25 @@ class TransferFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initAmountInputEditText()
         initRecyclerView()
+        transferButton.setOnClickListener {
+            ApplicationDatabase.getAppDatabase(context!!)
+                ?.getDAO()?.saveTransfer(TransferEntity(
+                    userId = "123456",
+                    userName = "Juan Carlos",
+                    transactionDate = "27/03/2021",
+                    transactionAmount = "50.000",
+                    receiverUserId = "666"
+                ))
+            val runnable = Runnable {
+                var userTransfersString = ""
+                val transferList = ApplicationDatabase.getAppDatabase(context!!)
+                    ?.getDAO()?.findTransferByUserName("Juan Carlos")
+                transferList!!.forEach { userTransfersString += "\n" + it }
+                Toast.makeText(context!!, userTransfersString, Toast.LENGTH_LONG).show()
+            }
+            val handler = Handler()
+            handler.postDelayed(runnable, 3000)
+        }
     }
 
     private fun initRecyclerView() {
